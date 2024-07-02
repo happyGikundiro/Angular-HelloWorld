@@ -1,0 +1,39 @@
+<p>task works! {{title}}</p>
+<img [src]="image" alt="">
+
+<form (ngSubmit) = "OnSubmit()">
+    <label for="name">Name:</label>
+    <input type="text" [(ngModel)]="name" name="name"><br>
+    <label for="email">Email:</label>
+    <input type="email"  [(ngModel)]="email"><br>
+    <button>Submit</button>
+</form>
+<div *ngIf="isSubmitted == true">
+    <p>If is submitted</p>
+    <p>name:{{name}}</p>
+</div>
+
+<div class="cards">
+<div *ngFor="let course of courses" class="card">
+<mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{course.category}}</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="course.imageUrl" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        <!-- string interpolation {{..}} -->
+        {{course.description}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="ViewCard()">View</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+</div>
+
+<app-task-detail [courses]="courses"></app-task-detail>
